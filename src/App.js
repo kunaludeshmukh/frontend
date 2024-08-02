@@ -1,25 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+import LandingPage from './screens/Landingpage/LandingPage';
+import { BrowserRouter, Route, Switch} from "react-router-dom";
+import MyNotes from './screens/MyNotes/MyNotes';
+// import { useRoutes } from 'react-router-dom';
+import { lazy } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () =>{
+  // const MyNotes = lazy(() => import('./my'));
+ 
+
+  // const AppRoutes = () => {
+  //   return useRoutes( { path: '/mynotes', element: <MyNotes /> });
+  // };
+
+  return(
+    <BrowserRouter>
+    <Header/>
+    {/* <main> */}
+    {/* <AppRoutes /> */}
+    <Switch>
+    <Route path="/" component={LandingPage} exact/>
+    <Route path="/mynotes" component={MyNotes}/>
+    </Switch>
+
+      
+
+    
+    {/* </main> */}
+    <Footer/>
+    </BrowserRouter>
+  )
+};
+
 
 export default App;
